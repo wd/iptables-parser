@@ -102,11 +102,12 @@ a:hover, a:focus, a:active {
 {%- set policy = table[chain]["policy"] -%}
 {%- set current_chain_id = table_name + chain -%}
 <table>
-    <tr><th id="{{ current_chain_id }}">{{ chain }} {%- if policy -%}({{ policy }}){%- endif -%}</th><th>Target</th></tr>
+    <tr><th>No.</th><th id="{{ current_chain_id }}">{{ chain }} {%- if policy -%}({{ policy }}){%- endif -%}</th><th>Target</th></tr>
     {%- set rules = table[chain]["rules"] -%}
     {%- for rule in rules -%}
     {%- set target_chain_id = table_name + rule[1] -%}
     <tr>
+        <td>{{ loop.index }}</td>
         <td>{{ rule[0] }}</td>
         <td><a href="#{{ target_chain_id }}">{{ rule[1] }}</a></td>
     </tr>
